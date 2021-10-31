@@ -12,6 +12,7 @@ public interface MovieService {
 	public void deleteMovie(Integer id);
 	public List<Movie> searchByDirector(String director_name);
 	public List<Movie> searchByFilmMaker(String filmmaker_name);
+	public List<Movie> searchByActor(String actor_name);
 	public List<Movie> searchByTitle(String title);
 	public List<Movie> searchMovie(String text);
 	public List<Movie> getAllMovies();

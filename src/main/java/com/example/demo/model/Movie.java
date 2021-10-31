@@ -2,6 +2,7 @@ package com.example.demo.model;
 
 import java.util.Base64;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -11,7 +12,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.Lob;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -55,6 +58,14 @@ public class Movie {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "filmmaker_id")
 	private FilmMaker filmMaker;
+	
+	@JsonManagedReference
+	@ManyToMany
+	@JoinTable(
+			name = "starring",
+			joinColumns= @JoinColumn(name = "movie_id"),
+			inverseJoinColumns = @JoinColumn(name = "actor_id"))	
+	private List<Actor> starring;
 	
 	@JsonIgnore
 	@Lob
@@ -135,5 +146,13 @@ public class Movie {
 
 	public void setPoster_encoded(String poster_encoded) {
 		this.poster_encoded = poster_encoded;
+	}
+	
+	public List<Actor> getStarring() {
+		return starring;
+	}
+	
+	public void setStarring(List<Actor> starring) {
+		this.starring = starring;
 	}
 }

@@ -9,31 +9,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.demo.dto.Label;
 import com.example.demo.model.Director;
 import com.example.demo.service.DirectorService;
 
 @RestController
-public class HelloController {
-
-	private Label label;
+public class DirectorController {
 	@Autowired
 	private DirectorService dirService;
-	
-	@RequestMapping(path = "/hello/{name}", method = RequestMethod.GET)
-	public String hello(@PathVariable String name) {
-		return "Hello " + name;
-	}
-	
-	@RequestMapping(path = "/label", method = RequestMethod.GET)
-	public Label getLabel() {
-		return this.label;
-	}
-	
-	@RequestMapping(path = "/label", method = RequestMethod.POST)
-	public void setLabel(@RequestBody Label label) {
-		this.label = label;
-	}
 	
 	@RequestMapping(path = "/director", method = RequestMethod.POST)
 	public Director addDirector(@RequestBody Director value) {

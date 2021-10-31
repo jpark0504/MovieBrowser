@@ -1,5 +1,6 @@
 package com.example.demo.model;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -27,8 +28,8 @@ public class Director {
 	private String firstName;
 	@Column(name = "lastname")
 	private String lastName;
-	@Column(name = "age")
-	private int age;
+	@Column(name = "birth_date")
+	private Date birthDate;
 	@JsonBackReference
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "director", cascade = CascadeType.ALL)
 	private List<Movie> movies;
@@ -52,11 +53,11 @@ public class Director {
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
-	public int getAge() {
-		return age;
+	public Date getBirthDate() {
+		return birthDate;
 	}
-	public void setAge(int age) {
-		this.age = age;
+	public void setBirthDate(Date birthDate) {
+		this.birthDate = birthDate;
 	}
 	public List<Movie> getMovies() {
 		return movies;

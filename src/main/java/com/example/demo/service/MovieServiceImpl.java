@@ -106,6 +106,11 @@ public class MovieServiceImpl implements MovieService {
 	}
 
 	@Override
+	public List<Movie> searchByActor(String actor_name) {
+		return MovieUtil.encodePoster(movieRepo.searchByActor(actor_name.toLowerCase()));
+	}
+
+	@Override
 	public List<Movie> searchByTitle(String title) {
 		return MovieUtil.encodePoster(movieRepo.searchByTitle(title.toLowerCase()));
 	}
